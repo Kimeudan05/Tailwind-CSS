@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festive Christmas Greeting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Keyframe animation for glowing stars */
+      @keyframes rotateStars {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Glowing effect for stars */
+      .star {
+        animation: rotateStars 5s linear infinite;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      }
+
+      /* Rotate text for extra animation */
+      .rotate-text {
+        animation: rotateStars 10s infinite linear;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-r from-green-400 via-red-400 to-yellow-500 text-white font-sans">
+    <div class="min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
+      <!-- Stars animation -->
+      <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <!-- Randomly position the stars -->
+        <div class="star" style="top: 50px; left: 200px;"></div>
+        <div class="star" style="top: 300px; left: 400px;"></div>
+        <div class="star" style="top: 600px; left: 700px;"></div>
+        <div class="star" style="top: 120px; left: 600px;"></div>
+        <div class="star" style="top: 450px; left: 100px;"></div>
+        <div class="star" style="top: 750px; left: 300px;"></div>
+      </div>
+
+      <!-- Festive greeting content -->
+      <div class="text-center z-10">
+        <h1 class="text-5xl font-bold mb-4 rotate-text">Merry Christmas, <span id="nameOutput"
+            class="text-6xl text-yellow-200">Friend!</span></h1>
+        <input type="text" id="nameInput" placeholder="Enter your name..."
+          class="p-2 rounded-lg border-none text-black shadow-lg text-xl w-72 focus:ring-2 focus:ring-yellow-500" />
+      </div>
+    </div>
+
+    <script>
+      // JavaScript to capture name input and update greeting
+      const nameInput = document.getElementById("nameInput");
+      const nameOutput = document.getElementById("nameOutput");
+
+      nameInput.addEventListener("input", function () {
+        // Update the greeting message with the input name
+        const name = nameInput.value.trim();
+        if (name) {
+          nameOutput.textContent = name + "!";
+        } else {
+          nameOutput.textContent = "Friend!";
+        }
+      });
+    </script>
+  </body>
+
+</html>
